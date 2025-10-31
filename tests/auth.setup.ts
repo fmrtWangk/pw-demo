@@ -5,7 +5,7 @@ import path from 'path';
 const authFile = path.join(__dirname, '../playwright/.auth/user.json');
 
 setup('authenticate', async ({ page }) => {
-  if (fs.existsSync(authFile)) return;
+  // if (fs.existsSync(authFile)) return;
   // Perform authentication steps. Replace these actions with your own.
   await page.goto(process.env.LOGIN_URL);
   await page.getByRole('textbox', { name: '请输入你的账号' }).fill(process.env.LOGIN_USERNAME);
@@ -23,3 +23,4 @@ setup('authenticate', async ({ page }) => {
   await page.getByRole('link', { name: '进入游戏' }).click();
   await fs.writeFileSync('./url.txt', page.url());
 });
+
